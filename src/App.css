@@ -1,0 +1,18 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  padding: var(--primitive-10);
+}
+
+.reopen {
+  background: var(--blue-200);
+  color: var(--white);
+  border-radius: var(--corner-base);
+  padding: var(--primitive-7) var(--primitive-8);
+  font-size: var(--font-medium-size);
+  line-height: var(--font-medium-line-height);
+  font-weight: var(--font-weight-medium);
+}

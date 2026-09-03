@@ -1,0 +1,36 @@
+:root {
+  /* Color tokens from Figma */
+  --white: #ffffff;
+  --black-base: #0c1113;
+  --black-verylight: #ebebeb;
+  --black-light: #bbbbbb;
+  --blue-200: #4e54f9;
+
+  /* Primitive spacing tokens from Figma */
+  --primitive-0: 0px;
+  --primitive-2: 2px;
+  --primitive-5: 8px;
+  --primitive-6: 10px;
+  --primitive-7: 12px;
+  --primitive-8: 16px;
+  --primitive-9: 20px;
+  --primitive-10: 24px;
+  --token-4: 8px;
+
+  /* Semantic radius tokens from Figma */
+  --semantic-large-card-corner: 10px;
+  --semantic-button-small-corner: 6px;
+  --corner-base: 10px;
+  --sds-size-stroke-border: 1px;
+
+  /* Typography tokens from Figma */
+  --font-family: "Inter", sans-serif;
+  --font-weight-medium: 500;
+  --font-large-size: 22px;
+  --font-large-line-height: 1.2;
+  --font-medium-size: 16px;
+  --font-medium-line-height: 1.5;
+
+  /* Shadow token from Figma: 0 14px 40px #0C11132E */
+  --shadow-modal: 0px 14px 40px 0px rgba(12, 17, 19, 0.18);
+}
