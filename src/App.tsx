@@ -1,19 +1,221 @@
-import { useState } from "react";
-import { UploadModal } from "./UploadModal";
+import { FormEvent, useState } from "react";
+import { Button } from "./components/Button";
+import { FeatureCard } from "./components/FeatureCard";
+import { InputField } from "./components/InputField";
+import { Switch } from "./components/Switch";
+import { Tag } from "./components/Tag";
 import "./App.css";
 
 export default function App() {
-  const [open, setOpen] = useState(true);
+  const [multisig, setMultisig] = useState(true);
+  const [travelRule, setTravelRule] = useState(true);
+  const [autosweep, setAutosweep] = useState(false);
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleDemo(event: FormEvent) {
+    event.preventDefault();
+    if (!email.includes("@")) {
+      setEmailError("Enter a work email to book the walkthrough.");
+      return;
+    }
+    setEmailError("");
+    setSubmitted(true);
+  }
 
   return (
-    <div className="app">
-      {open ? (
-        <UploadModal onClose={() => setOpen(false)} />
-      ) : (
-        <button className="reopen" type="button" onClick={() => setOpen(true)}>
-          Upload file to storage
-        </button>
-      )}
+    <div className="page">
+      <header className="nav">
+        <div className="shell nav__inner">
+          <a className="nav__logo" href="#top">
+            GEN6
+          </a>
+          <nav className="nav__links" aria-label="Primary">
+            <a href="#platform">Product</a>
+            <a href="#controls">Controls</a>
+            <a href="#demo">Demo</a>
+          </nav>
+          <Button size="small" onClick={() => document.getElementById("demo")?.scrollIntoView()}>
+            Talk to sales
+          </Button>
+        </div>
+      </header>
+
+      <main id="top">
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="shell hero__inner">
+            <div className="hero__tags">
+              <Tag label="SOC 2" variant="neutral" />
+              <Tag label="MULTI-SIG" variant="accent" />
+              <Tag label="LIVE" variant="success" />
+            </div>
+            <h1 id="hero-title" className="hero__title">
+              Institutional custody, without the ceremony.
+            </h1>
+            <p className="hero__body">
+              GEN6 is the operating system for digital asset desks. Policy, wallets, and
+              settlement sit in one pane so treasury, ops, and compliance move on the same clock.
+            </p>
+            <div className="hero__actions">
+              <Button
+                size="large"
+                trailingIcon
+                onClick={() => document.getElementById("demo")?.scrollIntoView()}
+              >
+                Get started
+              </Button>
+              <Button
+                variant="secondary"
+                size="large"
+                onClick={() => document.getElementById("platform")?.scrollIntoView()}
+              >
+                See the platform
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section id="platform" className="section" aria-labelledby="platform-title">
+          <div className="shell">
+            <p className="section__kicker">PRODUCT</p>
+            <h2 id="platform-title" className="section__title">
+              One stack for the whole desk.
+            </h2>
+            <p className="section__lead">
+              Every surface is token-bound to the GEN6 system: dark canvas, amber action, and
+              policy-grade controls.
+            </p>
+            <div className="card-grid">
+              <FeatureCard
+                title="Wallet"
+                description="Self-custody with social recovery."
+                link="Open →"
+              />
+              <FeatureCard
+                title="Policies"
+                description="Role-based approvals before every move."
+                link="Review →"
+              />
+              <FeatureCard
+                title="Treasury"
+                description="Live balances across chains and custodians."
+                link="Monitor →"
+              />
+              <FeatureCard
+                title="Audit"
+                description="Immutable logs for finance and compliance."
+                link="Inspect →"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="controls" className="section section--surface" aria-labelledby="controls-title">
+          <div className="shell controls">
+            <div className="controls__copy">
+              <p className="section__kicker">CONTROLS</p>
+              <h2 id="controls-title" className="section__title">
+                Policy that travels with the transaction.
+              </h2>
+              <p className="section__lead">
+                Toggle desk rules in production. GEN6 evaluates every transfer against the live
+                policy set before it leaves the vault.
+              </p>
+              <div className="controls__tags">
+                <Tag label="POLICY" variant="accent" />
+                <Tag label="READY" variant="secondary" />
+                <Tag label="SECURE" variant="success" />
+              </div>
+            </div>
+            <div className="controls__panel">
+              <Switch
+                label="Multi-sig required"
+                checked={multisig}
+                onChange={setMultisig}
+              />
+              <Switch
+                label="Travel rule checks"
+                checked={travelRule}
+                onChange={setTravelRule}
+              />
+              <Switch
+                label="Auto-sweep idle balances"
+                checked={autosweep}
+                onChange={setAutosweep}
+              />
+              <div className="controls__footer">
+                <Button
+                  variant="ghost"
+                  size="medium"
+                  onClick={() => {
+                    setMultisig(true);
+                    setTravelRule(true);
+                    setAutosweep(false);
+                  }}
+                >
+                  Reset defaults
+                </Button>
+                <Button variant="danger" size="medium">
+                  Freeze desk
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="demo" className="section" aria-labelledby="demo-title">
+          <div className="shell demo">
+            <div>
+              <p className="section__kicker">DEMO</p>
+              <h2 id="demo-title" className="section__title">
+                Book a 30-minute desk walkthrough.
+              </h2>
+              <p className="section__lead">
+                We’ll map GEN6 to your current vault, approval chain, and reporting pack.
+              </p>
+            </div>
+            {submitted ? (
+              <div className="demo__success">
+                <Tag label="BOOKED" variant="success" />
+                <p className="hero__body">
+                  Thanks. A GEN6 specialist will reach {email} shortly.
+                </p>
+              </div>
+            ) : (
+              <form className="demo__form" onSubmit={handleDemo}>
+                <InputField
+                  label="Work email"
+                  type="email"
+                  placeholder="you@firm.com"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  helper="We’ll only use this to schedule the session."
+                  error={emailError}
+                />
+                <InputField
+                  label="Company"
+                  placeholder="Northshore Capital"
+                  value={company}
+                  onChange={(event) => setCompany(event.target.value)}
+                  helper="Desk name or legal entity."
+                />
+                <Button type="submit" size="large" trailingIcon>
+                  Request walkthrough
+                </Button>
+              </form>
+            )}
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer">
+        <div className="shell footer__inner">
+          <span className="nav__logo">GEN6</span>
+          <p className="footer__copy">Fictive institutional OS. Built from the GEN6 component library.</p>
+        </div>
+      </footer>
     </div>
   );
 }

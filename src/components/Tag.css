@@ -1,0 +1,38 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  font-weight: 600;
+  letter-spacing: var(--type-label-tracking);
+  white-space: nowrap;
+}
+
+.tag--neutral {
+  background: var(--color-bg-surface-2);
+  border-color: var(--color-border-subtle);
+  color: var(--color-text-primary);
+}
+
+.tag--accent {
+  background: var(--color-accent-soft);
+  border-color: var(--color-tag-accent-border);
+  color: var(--color-accent-default);
+}
+
+.tag--success {
+  background: var(--color-success-soft);
+  border-color: var(--color-tag-success-border);
+  color: var(--color-success-default);
+}
+
+.tag--secondary {
+  background: var(--color-secondary-soft);
+  border-color: var(--color-secondary-default);
+  color: var(--color-tag-secondary-text);
+}

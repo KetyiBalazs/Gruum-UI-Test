@@ -1,0 +1,39 @@
+.switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+}
+
+.switch:focus-visible {
+  outline: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--effect-ring-focus);
+}
+
+.switch__track {
+  display: block;
+  width: 44px;
+  height: 24px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.switch__track img {
+  width: 44px;
+  height: 24px;
+}
+
+.switch__label {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}

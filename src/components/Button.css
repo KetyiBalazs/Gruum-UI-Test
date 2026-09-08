@@ -1,0 +1,102 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  background: transparent;
+  color: inherit;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--effect-ring-focus);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn--small {
+  height: 36px;
+  padding: 0 16px;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line);
+  font-weight: 500;
+}
+
+.btn--medium {
+  height: 44px;
+  padding: 0 20px;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line);
+  font-weight: 500;
+}
+
+.btn--large {
+  height: 52px;
+  padding: 0 28px;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: 400;
+}
+
+.btn--primary {
+  background: var(--color-accent-default);
+  color: var(--color-text-inverse);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+}
+
+.btn--primary:active:not(:disabled) {
+  background: var(--color-accent-default);
+  box-shadow: var(--effect-glow-accent);
+}
+
+.btn--secondary {
+  background: var(--color-bg-surface-2);
+  border-color: var(--color-border-subtle);
+  color: var(--color-text-primary);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--color-bg-surface-3);
+  border-color: var(--color-border-strong);
+}
+
+.btn--secondary:active:not(:disabled) {
+  background: var(--color-bg-surface-3);
+  border-color: var(--color-border-subtle);
+}
+
+.btn--ghost {
+  color: var(--color-text-primary);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: var(--color-bg-surface-1);
+}
+
+.btn--danger {
+  background: var(--color-danger-soft);
+  color: var(--color-danger-default);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+.btn--danger:active:not(:disabled) {
+  background: var(--color-danger-soft);
+}
+
+.btn__icon {
+  font-weight: inherit;
+}

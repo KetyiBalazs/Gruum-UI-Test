@@ -1,36 +1,51 @@
 :root {
-  /* Color tokens from Figma */
-  --white: #ffffff;
-  --black-base: #0c1113;
-  --black-verylight: #ebebeb;
-  --black-light: #bbbbbb;
-  --blue-200: #4e54f9;
+  /* Color tokens from Figma GEN6 */
+  --color-bg-canvas: #0b0b0f;
+  --color-bg-surface-1: #111116;
+  --color-bg-surface-2: #17171d;
+  --color-bg-surface-3: #1f1f27;
+  --color-border-subtle: #2a2a33;
+  --color-border-strong: #3a3a45;
+  --color-text-primary: #f4f4f7;
+  --color-text-secondary: #8a8a96;
+  --color-text-tertiary: #5e5e6b;
+  --color-text-inverse: #0b0b0f;
+  --color-accent-default: #ffb547;
+  --color-accent-hover: #ffc96b;
+  --color-accent-soft: #2b2410;
+  --color-secondary-default: #1f2bff;
+  --color-secondary-soft: #0f1633;
+  --color-success-default: #4ade80;
+  --color-success-soft: #0f2a1a;
+  --color-danger-default: #ff6b6b;
+  --color-danger-soft: #2a1315;
+  --color-danger-hover: #3a171a;
+  --color-tag-accent-border: #5c4a1a;
+  --color-tag-success-border: #1e5c36;
+  --color-tag-secondary-text: #8b94ff;
 
-  /* Primitive spacing tokens from Figma */
-  --primitive-0: 0px;
-  --primitive-2: 2px;
-  --primitive-5: 8px;
-  --primitive-6: 10px;
-  --primitive-7: 12px;
-  --primitive-8: 16px;
-  --primitive-9: 20px;
-  --primitive-10: 24px;
-  --token-4: 8px;
+  /* Radius tokens */
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 100px;
 
-  /* Semantic radius tokens from Figma */
-  --semantic-large-card-corner: 10px;
-  --semantic-button-small-corner: 6px;
-  --corner-base: 10px;
-  --sds-size-stroke-border: 1px;
-
-  /* Typography tokens from Figma */
+  /* Type tokens */
   --font-family: "Inter", sans-serif;
-  --font-weight-medium: 500;
-  --font-large-size: 22px;
-  --font-large-line-height: 1.2;
-  --font-medium-size: 16px;
-  --font-medium-line-height: 1.5;
+  --type-h2-size: 40px;
+  --type-h2-line: 42px;
+  --type-h2-tracking: -1px;
+  --type-h4-size: 20px;
+  --type-h4-line: 26px;
+  --type-body-size: 16px;
+  --type-body-line: 25.6px;
+  --type-small-size: 14px;
+  --type-small-line: 21px;
+  --type-label-size: 12px;
+  --type-label-line: 15.6px;
+  --type-label-tracking: 0.72px;
 
-  /* Shadow token from Figma: 0 14px 40px #0C11132E */
-  --shadow-modal: 0px 14px 40px 0px rgba(12, 17, 19, 0.18);
+  /* Effect tokens */
+  --effect-glow-accent: 0 0 0 4px rgba(255, 181, 71, 0.18);
+  --effect-ring-focus: 0 0 0 2px #0b0b0f, 0 0 0 4px #1f2bff;
+  --effect-shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
