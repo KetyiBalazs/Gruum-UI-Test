@@ -1,4 +1,9 @@
 :root {
+  /* Primitive amber tokens from the Gruum design system */
+  --amber-400: #ffc96b; /* Amber 400 */
+  --amber-500: #ffb547; /* Amber 500 */
+  --amber-900: #2b2410; /* Amber 900 */
+
   /* Color tokens from Figma GEN6 */
   --color-bg-canvas: #0b0b0f;
   --color-bg-surface-1: #111116;
@@ -10,9 +15,9 @@
   --color-text-secondary: #8a8a96;
   --color-text-tertiary: #5e5e6b;
   --color-text-inverse: #0b0b0f;
-  --color-accent-default: #ffb547;
-  --color-accent-hover: #ffc96b;
-  --color-accent-soft: #2b2410;
+  --color-accent-default: var(--amber-500);
+  --color-accent-hover: var(--amber-400);
+  --color-accent-soft: var(--amber-900);
   --color-secondary-default: #1f2bff;
   --color-secondary-soft: #0f1633;
   --color-success-default: #4ade80;
