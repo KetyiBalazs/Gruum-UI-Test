@@ -4,6 +4,7 @@ import { FeatureCard } from "./components/FeatureCard";
 import { InputField } from "./components/InputField";
 import { Switch } from "./components/Switch";
 import { Tag } from "./components/Tag";
+import { TextArea } from "./components/TextArea";
 import "./App.css";
 
 export default function App() {
@@ -14,6 +15,9 @@ export default function App() {
   const [company, setCompany] = useState("");
   const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [questionError, setQuestionError] = useState("");
+  const [questionSent, setQuestionSent] = useState(false);
 
   function handleDemo(event: FormEvent) {
     event.preventDefault();
@@ -25,17 +29,28 @@ export default function App() {
     setSubmitted(true);
   }
 
+  function handleQuestion(event: FormEvent) {
+    event.preventDefault();
+    if (!question.trim()) {
+      setQuestionError("Tell us what you need help with.");
+      return;
+    }
+    setQuestionError("");
+    setQuestionSent(true);
+  }
+
   return (
     <div className="page">
       <header className="nav">
         <div className="shell nav__inner">
           <a className="nav__logo" href="#top">
-            GEN6
+            Example
           </a>
           <nav className="nav__links" aria-label="Primary">
             <a href="#platform">Product</a>
             <a href="#controls">Controls</a>
             <a href="#demo">Demo</a>
+            <a href="#help">Help</a>
           </nav>
           <Button size="small" onClick={() => document.getElementById("demo")?.scrollIntoView()}>
             Talk to sales
@@ -55,7 +70,7 @@ export default function App() {
               Institutional custody, without the ceremony.
             </h1>
             <p className="hero__body">
-              GEN6 is the operating system for digital asset desks. Policy, wallets, and
+              Example Project is the operating system for digital asset desks. Policy, wallets, and
               settlement sit in one pane so treasury, ops, and compliance move on the same clock.
             </p>
             <div className="hero__actions">
@@ -84,7 +99,7 @@ export default function App() {
               One stack for the whole desk.
             </h2>
             <p className="section__lead">
-              Every surface is token-bound to the GEN6 system: dark canvas, amber action, and
+              Every surface is token-bound to the Example Project system: dark canvas, amber action, and
               policy-grade controls.
             </p>
             <div className="card-grid">
@@ -120,7 +135,7 @@ export default function App() {
                 Policy that travels with the transaction.
               </h2>
               <p className="section__lead">
-                Toggle desk rules in production. GEN6 evaluates every transfer against the live
+                Toggle desk rules in production. Example Project evaluates every transfer against the live
                 policy set before it leaves the vault.
               </p>
               <div className="controls__tags">
@@ -173,14 +188,14 @@ export default function App() {
                 Book a 30-minute desk walkthrough.
               </h2>
               <p className="section__lead">
-                We’ll map GEN6 to your current vault, approval chain, and reporting pack.
+                We&apos;ll map Example Project to your current vault, approval chain, and reporting pack.
               </p>
             </div>
             {submitted ? (
               <div className="demo__success">
                 <Tag label="BOOKED" variant="success" />
                 <p className="hero__body">
-                  Thanks. A GEN6 specialist will reach {email} shortly.
+                  Thanks. An Example Project specialist will reach {email} shortly.
                 </p>
               </div>
             ) : (
@@ -191,7 +206,7 @@ export default function App() {
                   placeholder="you@firm.com"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  helper="We’ll only use this to schedule the session."
+                  helper="We&apos;ll only use this to schedule the session."
                   error={emailError}
                 />
                 <InputField
@@ -208,12 +223,51 @@ export default function App() {
             )}
           </div>
         </section>
+
+        <section id="help" className="section section--surface" aria-labelledby="help-title">
+          <div className="shell demo">
+            <div>
+              <p className="section__kicker">HELP</p>
+              <h2 id="help-title" className="section__title">
+                Need help? Ask us a question.
+              </h2>
+              <p className="section__lead">
+                Share a desk, policy, or settlement question and an Example Project specialist will
+                follow up.
+              </p>
+            </div>
+            {questionSent ? (
+              <div className="demo__success">
+                <Tag label="SENT" variant="success" />
+                <p className="hero__body">
+                  Got it. We&apos;ll reply with next steps shortly.
+                </p>
+              </div>
+            ) : (
+              <form className="demo__form" onSubmit={handleQuestion}>
+                <TextArea
+                  label="Your question"
+                  placeholder="How do multi-sig policies apply to cold wallets?"
+                  value={question}
+                  onChange={(event) => setQuestion(event.target.value)}
+                  helper="Include enough context for us to route the right specialist."
+                  error={questionError}
+                />
+                <Button type="submit" size="large" trailingIcon>
+                  Send question
+                </Button>
+              </form>
+            )}
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
         <div className="shell footer__inner">
-          <span className="nav__logo">GEN6</span>
-          <p className="footer__copy">Fictive institutional OS. Built from the GEN6 component library.</p>
+          <span className="nav__logo">Example Project</span>
+          <p className="footer__copy">
+            Fictive institutional OS. Built from the Example Project component library.
+          </p>
         </div>
       </footer>
     </div>

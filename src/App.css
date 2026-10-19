@@ -12,7 +12,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(11, 11, 15, 0.92);
+  background: var(--color-bg-nav);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 

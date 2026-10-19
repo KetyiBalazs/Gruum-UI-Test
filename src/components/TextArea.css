@@ -1,0 +1,10 @@
+.field__textarea {
+  height: auto;
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.field__textarea:focus {
+  padding: 11px 13px;
+}
