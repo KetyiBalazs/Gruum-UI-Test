@@ -157,6 +157,70 @@
   padding-top: 8px;
 }
 
+.industries {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 48px;
+  align-items: start;
+}
+
+.industries__header .section__lead {
+  max-width: 520px;
+}
+
+.industries__team {
+  margin: 28px 0 0;
+  padding: 0;
+  border: none;
+}
+
+.industries__team-label {
+  margin: 0 0 12px;
+  padding: 0;
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.industries__team-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+}
+
+.industries__timezone {
+  margin-top: 24px;
+  max-width: 360px;
+}
+
+.industries__selected {
+  margin-top: 24px;
+}
+
+.industries__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface-1);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .demo {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
@@ -207,6 +271,7 @@
 
   .card-grid,
   .controls,
+  .industries,
   .demo {
     grid-template-columns: 1fr;
   }

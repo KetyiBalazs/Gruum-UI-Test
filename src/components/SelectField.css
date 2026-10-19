@@ -1,0 +1,36 @@
+@import "./InputField.css";
+
+.field__select-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.field__select {
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.field__select:focus {
+  padding-right: 39px;
+}
+
+.field__select--empty {
+  color: var(--color-text-tertiary);
+}
+
+.field__select option {
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface-1);
+}
+
+.field__select-chevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  display: inline-flex;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  transform: translateY(-50%);
+}

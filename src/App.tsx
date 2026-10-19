@@ -1,11 +1,43 @@
 import { FormEvent, useState } from "react";
 import { Button } from "./components/Button";
+import { Checkbox } from "./components/Checkbox";
 import { FeatureCard } from "./components/FeatureCard";
 import { InputField } from "./components/InputField";
+import { Radio } from "./components/Radio";
+import { SelectField } from "./components/SelectField";
 import { Switch } from "./components/Switch";
 import { Tag } from "./components/Tag";
 import { TextArea } from "./components/TextArea";
 import "./App.css";
+
+const INDUSTRIES = [
+  "Asset management",
+  "Banking",
+  "Crypto / digital assets",
+  "Exchanges",
+  "Family office",
+  "Fintech",
+  "Hedge fund",
+  "Insurance",
+] as const;
+
+const TEAM_SIZES = ["Solo", "1-5", "5-10", "10-50", "50+"] as const;
+
+const TIMEZONES = [
+  { value: "Pacific/Honolulu", label: "Hawaii (HST)" },
+  { value: "America/Los_Angeles", label: "Pacific Time (PT)" },
+  { value: "America/Denver", label: "Mountain Time (MT)" },
+  { value: "America/Chicago", label: "Central Time (CT)" },
+  { value: "America/New_York", label: "Eastern Time (ET)" },
+  { value: "America/Sao_Paulo", label: "Brasilia (BRT)" },
+  { value: "Europe/London", label: "London (GMT/BST)" },
+  { value: "Europe/Paris", label: "Central Europe (CET)" },
+  { value: "Europe/Zurich", label: "Zurich (CET)" },
+  { value: "Asia/Dubai", label: "Dubai (GST)" },
+  { value: "Asia/Singapore", label: "Singapore (SGT)" },
+  { value: "Asia/Tokyo", label: "Tokyo (JST)" },
+  { value: "Australia/Sydney", label: "Sydney (AEST)" },
+] as const;
 
 export default function App() {
   const [multisig, setMultisig] = useState(true);
@@ -18,6 +50,9 @@ export default function App() {
   const [question, setQuestion] = useState("");
   const [questionError, setQuestionError] = useState("");
   const [questionSent, setQuestionSent] = useState(false);
+  const [industries, setIndustries] = useState<string[]>([]);
+  const [teamSize, setTeamSize] = useState<(typeof TEAM_SIZES)[number] | "">("");
+  const [timezone, setTimezone] = useState("");
 
   function handleDemo(event: FormEvent) {
     event.preventDefault();
@@ -39,6 +74,12 @@ export default function App() {
     setQuestionSent(true);
   }
 
+  function toggleIndustry(industry: string, checked: boolean) {
+    setIndustries((current) =>
+      checked ? [...current, industry] : current.filter((item) => item !== industry),
+    );
+  }
+
   return (
     <div className="page">
       <header className="nav">
@@ -49,6 +90,7 @@ export default function App() {
           <nav className="nav__links" aria-label="Primary">
             <a href="#platform">Product</a>
             <a href="#controls">Controls</a>
+            <a href="#industries">Industries</a>
             <a href="#demo">Demo</a>
             <a href="#help">Help</a>
           </nav>
@@ -180,7 +222,63 @@ export default function App() {
           </div>
         </section>
 
-        <section id="demo" className="section" aria-labelledby="demo-title">
+        <section id="industries" className="section" aria-labelledby="industries-title">
+          <div className="shell industries">
+            <div className="industries__header">
+              <p className="section__kicker">PROFILE</p>
+              <h2 id="industries-title" className="section__title">
+                What do you work on?
+              </h2>
+              <p className="section__lead">
+                Pick the industries that describe your desk. We use this to tailor the walkthrough
+                and policy examples.
+              </p>
+              <fieldset className="industries__team">
+                <legend className="industries__team-label">Team size</legend>
+                <div className="industries__team-row" role="presentation">
+                  {TEAM_SIZES.map((size) => (
+                    <Radio
+                      key={size}
+                      name="team-size"
+                      label={size}
+                      value={size}
+                      checked={teamSize === size}
+                      onChange={() => setTeamSize(size)}
+                    />
+                  ))}
+                </div>
+              </fieldset>
+              <div className="industries__timezone">
+                <SelectField
+                  label="Timezone"
+                  placeholder="Select a timezone"
+                  options={[...TIMEZONES]}
+                  value={timezone}
+                  onChange={(event) => setTimezone(event.target.value)}
+                  helper="Used for scheduling the walkthrough."
+                />
+              </div>
+              {industries.length > 0 ? (
+                <div className="industries__selected">
+                  <Tag label={`${industries.length} SELECTED`} variant="accent" />
+                </div>
+              ) : null}
+            </div>
+            <fieldset className="industries__list">
+              <legend className="visually-hidden">Industries</legend>
+              {INDUSTRIES.map((industry) => (
+                <Checkbox
+                  key={industry}
+                  label={industry}
+                  checked={industries.includes(industry)}
+                  onChange={(checked) => toggleIndustry(industry, checked)}
+                />
+              ))}
+            </fieldset>
+          </div>
+        </section>
+
+        <section id="demo" className="section section--surface" aria-labelledby="demo-title">
           <div className="shell demo">
             <div>
               <p className="section__kicker">DEMO</p>
@@ -224,7 +322,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="help" className="section section--surface" aria-labelledby="help-title">
+        <section id="help" className="section" aria-labelledby="help-title">
           <div className="shell demo">
             <div>
               <p className="section__kicker">HELP</p>

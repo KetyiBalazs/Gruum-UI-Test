@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/button.tsx","./src/components/checkbox.tsx","./src/components/featurecard.tsx","./src/components/inputfield.tsx","./src/components/radio.tsx","./src/components/selectfield.tsx","./src/components/switch.tsx","./src/components/tag.tsx","./src/components/textarea.tsx"],"version":"5.9.3"}
