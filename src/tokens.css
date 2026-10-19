@@ -6,6 +6,7 @@
 
   /* Color tokens from Figma Example Project */
   --color-bg-canvas: #0b0b0f;
+  --color-bg-nav: color-mix(in srgb, var(--color-bg-canvas) 92%, transparent);
   --color-bg-surface-1: #111116;
   --color-bg-surface-2: #17171d;
   --color-bg-surface-3: #1f1f27;

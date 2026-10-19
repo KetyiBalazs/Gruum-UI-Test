@@ -206,7 +206,7 @@ export default function App() {
                   placeholder="you@firm.com"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  helper="We&apos;ll only use this to schedule the session."
+                  helper="We'll only use this to schedule the session."
                   error={emailError}
                 />
                 <InputField
