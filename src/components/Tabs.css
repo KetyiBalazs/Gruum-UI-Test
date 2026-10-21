@@ -1,0 +1,70 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.tabs__list {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 4px;
+  padding: 4px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface-2);
+}
+
+.tabs__tab {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 16px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tabs__tab--selected {
+  background: var(--color-bg-surface-1);
+  color: var(--color-text-primary);
+}
+
+.tabs__tab:focus-visible {
+  outline: none;
+  box-shadow: var(--effect-ring-focus);
+}
+
+.tabs__indicator {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: transparent;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.tabs__tab--selected .tabs__indicator {
+  background: var(--color-accent-default);
+  transform: scaleX(1);
+}
+
+.tabs__panel {
+  min-width: 0;
+}
+
+.tabs__panel[hidden] {
+  display: none;
+}

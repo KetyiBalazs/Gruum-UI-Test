@@ -3,9 +3,11 @@ import { Button } from "./components/Button";
 import { Checkbox } from "./components/Checkbox";
 import { FeatureCard } from "./components/FeatureCard";
 import { InputField } from "./components/InputField";
+import { Menu } from "./components/Menu";
 import { Radio } from "./components/Radio";
 import { SelectField } from "./components/SelectField";
 import { Switch } from "./components/Switch";
+import { Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
 import { TextArea } from "./components/TextArea";
 import "./App.css";
@@ -39,6 +41,19 @@ const TIMEZONES = [
   { value: "Australia/Sydney", label: "Sydney (AEST)" },
 ] as const;
 
+const COUNTRIES = [
+  { value: "us", label: "United States" },
+  { value: "ca", label: "Canada" },
+  { value: "gb", label: "United Kingdom" },
+  { value: "de", label: "Germany" },
+  { value: "ch", label: "Switzerland" },
+  { value: "sg", label: "Singapore" },
+  { value: "jp", label: "Japan" },
+  { value: "au", label: "Australia" },
+  { value: "br", label: "Brazil" },
+  { value: "ae", label: "United Arab Emirates" },
+] as const;
+
 export default function App() {
   const [multisig, setMultisig] = useState(true);
   const [travelRule, setTravelRule] = useState(true);
@@ -53,6 +68,7 @@ export default function App() {
   const [industries, setIndustries] = useState<string[]>([]);
   const [teamSize, setTeamSize] = useState<(typeof TEAM_SIZES)[number] | "">("");
   const [timezone, setTimezone] = useState("");
+  const [country, setCountry] = useState("");
 
   function handleDemo(event: FormEvent) {
     event.preventDefault();
@@ -91,10 +107,9 @@ export default function App() {
             <a href="#platform">Product</a>
             <a href="#controls">Controls</a>
             <a href="#industries">Industries</a>
-            <a href="#demo">Demo</a>
-            <a href="#help">Help</a>
+            <a href="#contact">Get in touch</a>
           </nav>
-          <Button size="small" onClick={() => document.getElementById("demo")?.scrollIntoView()}>
+          <Button size="small" onClick={() => document.getElementById("contact")?.scrollIntoView()}>
             Talk to sales
           </Button>
         </div>
@@ -119,7 +134,7 @@ export default function App() {
               <Button
                 size="large"
                 trailingIcon
-                onClick={() => document.getElementById("demo")?.scrollIntoView()}
+                onClick={() => document.getElementById("contact")?.scrollIntoView()}
               >
                 Get started
               </Button>
@@ -248,7 +263,7 @@ export default function App() {
                   ))}
                 </div>
               </fieldset>
-              <div className="industries__timezone">
+              <div className="industries__schedule">
                 <SelectField
                   label="Timezone"
                   placeholder="Select a timezone"
@@ -256,6 +271,14 @@ export default function App() {
                   value={timezone}
                   onChange={(event) => setTimezone(event.target.value)}
                   helper="Used for scheduling the walkthrough."
+                />
+                <Menu
+                  label="Country"
+                  placeholder="Select a country"
+                  options={[...COUNTRIES]}
+                  value={country}
+                  onSelect={setCountry}
+                  helper="Desk location for the walkthrough."
                 />
               </div>
               {industries.length > 0 ? (
@@ -278,84 +301,110 @@ export default function App() {
           </div>
         </section>
 
-        <section id="demo" className="section section--surface" aria-labelledby="demo-title">
-          <div className="shell demo">
-            <div>
-              <p className="section__kicker">DEMO</p>
-              <h2 id="demo-title" className="section__title">
-                Book a 30-minute desk walkthrough.
+        <section id="contact" className="section section--surface" aria-labelledby="contact-title">
+          <div className="shell contact">
+            <div className="contact__intro">
+              <p className="section__kicker">CONTACT</p>
+              <h2 id="contact-title" className="section__title">
+                Get in touch
               </h2>
               <p className="section__lead">
-                We&apos;ll map Example Project to your current vault, approval chain, and reporting pack.
+                Book a desk walkthrough or send a question. An Example Project specialist will follow
+                up with next steps.
               </p>
             </div>
-            {submitted ? (
-              <div className="demo__success">
-                <Tag label="BOOKED" variant="success" />
-                <p className="hero__body">
-                  Thanks. An Example Project specialist will reach {email} shortly.
-                </p>
-              </div>
-            ) : (
-              <form className="demo__form" onSubmit={handleDemo}>
-                <InputField
-                  label="Work email"
-                  type="email"
-                  placeholder="you@firm.com"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  helper="We'll only use this to schedule the session."
-                  error={emailError}
-                />
-                <InputField
-                  label="Company"
-                  placeholder="Northshore Capital"
-                  value={company}
-                  onChange={(event) => setCompany(event.target.value)}
-                  helper="Desk name or legal entity."
-                />
-                <Button type="submit" size="large" trailingIcon>
-                  Request walkthrough
-                </Button>
-              </form>
-            )}
-          </div>
-        </section>
-
-        <section id="help" className="section" aria-labelledby="help-title">
-          <div className="shell demo">
-            <div>
-              <p className="section__kicker">HELP</p>
-              <h2 id="help-title" className="section__title">
-                Need help? Ask us a question.
-              </h2>
-              <p className="section__lead">
-                Share a desk, policy, or settlement question and an Example Project specialist will
-                follow up.
-              </p>
-            </div>
-            {questionSent ? (
-              <div className="demo__success">
-                <Tag label="SENT" variant="success" />
-                <p className="hero__body">
-                  Got it. We&apos;ll reply with next steps shortly.
-                </p>
-              </div>
-            ) : (
-              <form className="demo__form" onSubmit={handleQuestion}>
-                <TextArea
-                  label="Your question"
-                  placeholder="How do multi-sig policies apply to cold wallets?"
-                  value={question}
-                  onChange={(event) => setQuestion(event.target.value)}
-                  helper="Include enough context for us to route the right specialist."
-                  error={questionError}
-                />
-                <Button type="submit" size="large" trailingIcon>
-                  Send question
-                </Button>
-              </form>
-            )}
+            <Tabs
+              label="Get in touch"
+              defaultValue="demo"
+              items={[
+                {
+                  id: "demo",
+                  label: "Demo",
+                  panel: (
+                    <div className="demo">
+                      <div>
+                        <h3 className="contact__panel-title">
+                          Book a 30-minute desk walkthrough.
+                        </h3>
+                        <p className="section__lead">
+                          We&apos;ll map Example Project to your current vault, approval chain, and
+                          reporting pack.
+                        </p>
+                      </div>
+                      {submitted ? (
+                        <div className="demo__success">
+                          <Tag label="BOOKED" variant="success" />
+                          <p className="hero__body">
+                            Thanks. An Example Project specialist will reach {email} shortly.
+                          </p>
+                        </div>
+                      ) : (
+                        <form className="demo__form" onSubmit={handleDemo}>
+                          <InputField
+                            label="Work email"
+                            type="email"
+                            placeholder="you@firm.com"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
+                            helper="We'll only use this to schedule the session."
+                            error={emailError}
+                          />
+                          <InputField
+                            label="Company"
+                            placeholder="Northshore Capital"
+                            value={company}
+                            onChange={(event) => setCompany(event.target.value)}
+                            helper="Desk name or legal entity."
+                          />
+                          <Button type="submit" size="large" trailingIcon>
+                            Request walkthrough
+                          </Button>
+                        </form>
+                      )}
+                    </div>
+                  ),
+                },
+                {
+                  id: "help",
+                  label: "Help",
+                  panel: (
+                    <div className="demo">
+                      <div>
+                        <h3 className="contact__panel-title">
+                          Need help? Ask us a question.
+                        </h3>
+                        <p className="section__lead">
+                          Share a desk, policy, or settlement question and an Example Project
+                          specialist will follow up.
+                        </p>
+                      </div>
+                      {questionSent ? (
+                        <div className="demo__success">
+                          <Tag label="SENT" variant="success" />
+                          <p className="hero__body">
+                            Got it. We&apos;ll reply with next steps shortly.
+                          </p>
+                        </div>
+                      ) : (
+                        <form className="demo__form" onSubmit={handleQuestion}>
+                          <TextArea
+                            label="Your question"
+                            placeholder="How do multi-sig policies apply to cold wallets?"
+                            value={question}
+                            onChange={(event) => setQuestion(event.target.value)}
+                            helper="Include enough context for us to route the right specialist."
+                            error={questionError}
+                          />
+                          <Button type="submit" size="large" trailingIcon>
+                            Send question
+                          </Button>
+                        </form>
+                      )}
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </div>
         </section>
       </main>
