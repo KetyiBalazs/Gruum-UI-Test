@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "npx --yes --prefer-offline @grum-os/cli hook after-file-edit"
+      }
+    ],
+    "stop": [
+      {
+        "command": "npx --yes --prefer-offline @grum-os/cli hook stop"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "npx --yes --prefer-offline @grum-os/cli hook before-shell"
+      }
+    ]
+  }
+}
