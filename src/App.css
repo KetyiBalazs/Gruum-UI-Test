@@ -214,6 +214,13 @@
   color: var(--color-text-primary);
 }
 
+/* Match Book demo's two stacked fields so Get Help does not jump on tab switch. */
+.contact .demo__form .field__textarea {
+  height: 157px;
+  min-height: 157px;
+  resize: none;
+}
+
 .industries__selected {
   margin-top: 24px;
 }
@@ -252,6 +259,16 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.demo__form-error {
+  margin: -8px 0 0;
+  min-height: var(--type-label-line);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  font-weight: 600;
+  letter-spacing: var(--type-label-tracking);
+  color: var(--color-danger-default);
 }
 
 .demo__success {

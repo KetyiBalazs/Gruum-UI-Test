@@ -319,7 +319,7 @@ export default function App() {
               items={[
                 {
                   id: "demo",
-                  label: "Demo",
+                  label: "Book demo",
                   panel: (
                     <div className="demo">
                       <div>
@@ -345,9 +345,12 @@ export default function App() {
                             type="email"
                             placeholder="you@firm.com"
                             value={email}
-                            onChange={(event) => setEmail(event.target.value)}
+                            onChange={(event) => {
+                              setEmail(event.target.value);
+                              if (emailError) setEmailError("");
+                            }}
                             helper="We'll only use this to schedule the session."
-                            error={emailError}
+                            className={emailError ? "field--error" : ""}
                           />
                           <InputField
                             label="Company"
@@ -359,6 +362,9 @@ export default function App() {
                           <Button type="submit" size="large" trailingIcon>
                             Request walkthrough
                           </Button>
+                          <p className="demo__form-error" aria-live="polite">
+                            {emailError || "\u00a0"}
+                          </p>
                         </form>
                       )}
                     </div>
@@ -366,7 +372,7 @@ export default function App() {
                 },
                 {
                   id: "help",
-                  label: "Help",
+                  label: "Get Help",
                   panel: (
                     <div className="demo">
                       <div>
@@ -391,13 +397,19 @@ export default function App() {
                             label="Your question"
                             placeholder="How do multi-sig policies apply to cold wallets?"
                             value={question}
-                            onChange={(event) => setQuestion(event.target.value)}
+                            onChange={(event) => {
+                              setQuestion(event.target.value);
+                              if (questionError) setQuestionError("");
+                            }}
                             helper="Include enough context for us to route the right specialist."
-                            error={questionError}
+                            className={questionError ? "field--error" : ""}
                           />
                           <Button type="submit" size="large" trailingIcon>
                             Send question
                           </Button>
+                          <p className="demo__form-error" aria-live="polite">
+                            {questionError || "\u00a0"}
+                          </p>
                         </form>
                       )}
                     </div>
