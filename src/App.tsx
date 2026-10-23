@@ -4,6 +4,7 @@ import { Checkbox } from "./components/Checkbox";
 import { FeatureCard } from "./components/FeatureCard";
 import { InputField } from "./components/InputField";
 import { Menu } from "./components/Menu";
+import { Modal } from "./components/Modal";
 import { Radio } from "./components/Radio";
 import { SelectField } from "./components/SelectField";
 import { Switch } from "./components/Switch";
@@ -69,6 +70,10 @@ export default function App() {
   const [teamSize, setTeamSize] = useState<(typeof TEAM_SIZES)[number] | "">("");
   const [timezone, setTimezone] = useState("");
   const [country, setCountry] = useState("");
+  const [getStartedOpen, setGetStartedOpen] = useState(false);
+  const [startEmail, setStartEmail] = useState("");
+  const [startError, setStartError] = useState("");
+  const [startSubmitted, setStartSubmitted] = useState(false);
 
   function handleDemo(event: FormEvent) {
     event.preventDefault();
@@ -88,6 +93,23 @@ export default function App() {
     }
     setQuestionError("");
     setQuestionSent(true);
+  }
+
+  function closeGetStarted() {
+    setGetStartedOpen(false);
+    setStartEmail("");
+    setStartError("");
+    setStartSubmitted(false);
+  }
+
+  function handleGetStarted(event: FormEvent) {
+    event.preventDefault();
+    if (!startEmail.includes("@")) {
+      setStartError("Enter a work email to get started.");
+      return;
+    }
+    setStartError("");
+    setStartSubmitted(true);
   }
 
   function toggleIndustry(industry: string, checked: boolean) {
@@ -134,7 +156,7 @@ export default function App() {
               <Button
                 size="large"
                 trailingIcon
-                onClick={() => document.getElementById("contact")?.scrollIntoView()}
+                onClick={() => setGetStartedOpen(true)}
               >
                 Get started
               </Button>
@@ -420,6 +442,57 @@ export default function App() {
           </div>
         </section>
       </main>
+
+      <Modal
+        open={getStartedOpen}
+        onClose={closeGetStarted}
+        title="Get started"
+        footer={
+          startSubmitted ? (
+            <Button variant="secondary" size="medium" onClick={closeGetStarted}>
+              Close
+            </Button>
+          ) : (
+            <>
+              <Button variant="ghost" size="medium" onClick={closeGetStarted}>
+                Not now
+              </Button>
+              <Button type="submit" form="get-started-form" size="medium" trailingIcon>
+                Continue
+              </Button>
+            </>
+          )
+        }
+      >
+        {startSubmitted ? (
+          <>
+            <Tag label="STARTED" variant="success" />
+            <p>
+              Thanks. An Example Project specialist will reach {startEmail} shortly.
+            </p>
+          </>
+        ) : (
+          <form id="get-started-form" className="demo__form" onSubmit={handleGetStarted}>
+            <p>
+              Open an Example Project desk. We&apos;ll use your work email to set up the
+              walkthrough.
+            </p>
+            <InputField
+              id="get-started-email"
+              label="Work email"
+              type="email"
+              placeholder="you@firm.com"
+              value={startEmail}
+              onChange={(event) => {
+                setStartEmail(event.target.value);
+                if (startError) setStartError("");
+              }}
+              helper="We'll only use this to open the desk."
+              error={startError || undefined}
+            />
+          </form>
+        )}
+      </Modal>
 
       <footer className="footer">
         <div className="shell footer__inner">
