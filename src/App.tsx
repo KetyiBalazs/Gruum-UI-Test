@@ -156,6 +156,7 @@ export default function App() {
               <Button
                 size="large"
                 trailingIcon
+                id="qa-open-modal"
                 onClick={() => setGetStartedOpen(true)}
               >
                 Get started
@@ -444,6 +445,7 @@ export default function App() {
       </main>
 
       <Modal
+        id="qa-modal"
         open={getStartedOpen}
         onClose={closeGetStarted}
         title="Get started"

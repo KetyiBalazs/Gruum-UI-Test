@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import "./Modal.css";
 
 type ModalProps = {
+  id?: string;
   open: boolean;
   onClose: () => void;
   title: string;
@@ -10,7 +11,7 @@ type ModalProps = {
   footer?: ReactNode;
 };
 
-export function Modal({ open, onClose, title, children, footer }: ModalProps) {
+export function Modal({ id, open, onClose, title, children, footer }: ModalProps) {
   const titleId = useId();
   const descriptionId = useId();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -27,6 +28,7 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
   return (
     <dialog
       ref={dialogRef}
+      id={id}
       className="modal"
       aria-modal="true"
       aria-labelledby={titleId}
