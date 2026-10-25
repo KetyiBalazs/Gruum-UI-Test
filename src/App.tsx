@@ -5,6 +5,7 @@ import { FeatureCard } from "./components/FeatureCard";
 import { InputField } from "./components/InputField";
 import { Menu } from "./components/Menu";
 import { Modal } from "./components/Modal";
+import { Popover } from "./components/Popover";
 import { Radio } from "./components/Radio";
 import { SelectField } from "./components/SelectField";
 import { Switch } from "./components/Switch";
@@ -141,9 +142,26 @@ export default function App() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="shell hero__inner">
             <div className="hero__tags">
-              <Tag label="SOC 2" variant="neutral" />
-              <Tag label="MULTI-SIG" variant="accent" />
-              <Tag label="LIVE" variant="success" />
+              <Popover
+                label="SOC 2"
+                title="System and Organization Controls 2"
+                body="An auditing framework and compliance standard that guides service organizations, especially cloud and SaaS providers, on how to securely manage and protect customer data."
+              >
+                <Tag label="SOC 2" variant="neutral" />
+              </Popover>
+              <Popover
+                label="MULTI-SIG"
+                title="multisig (short for multi-signature)"
+                body="A cryptocurrency wallet that requires two or more private keys to authorize and send a transaction instead of just a single key."
+              >
+                <Tag label="MULTI-SIG" variant="accent" />
+              </Popover>
+              <Popover
+                label="LIVE"
+                body="This site is live and ready to be distributed"
+              >
+                <Tag label="LIVE" variant="success" />
+              </Popover>
             </div>
             <h1 id="hero-title" className="hero__title">
               Institutional custody, without the ceremony.
