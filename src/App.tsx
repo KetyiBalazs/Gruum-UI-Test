@@ -127,6 +127,7 @@ export default function App() {
             Example
           </a>
           <nav className="nav__links" aria-label="Primary">
+            <a href="/floating-qa">Floating QA</a>
             <a href="#platform">Product</a>
             <a href="#controls">Controls</a>
             <a href="#industries">Industries</a>
