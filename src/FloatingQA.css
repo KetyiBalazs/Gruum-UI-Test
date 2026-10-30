@@ -3,8 +3,9 @@
 .floating-qa button { padding: 10px 16px; margin-bottom: 60px; }
 .qa-grid { display: grid; grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 100px 32px; }
 .qa-anchor { position: relative; min-height: 80px; }
-.qa-tip { position: absolute; bottom: 100%; left: 0; margin-bottom: 8px; padding: 10px 14px; border-radius: 8px; opacity: 0; visibility: hidden; transition: opacity 150ms; }
-.qa-tip.qa-open, .qa-anchor:hover .qa-tip, .qa-anchor:focus-within .qa-tip { opacity: 1; visibility: visible; }
+.qa-tip { position: absolute; bottom: 100%; left: 0; margin-bottom: 8px; padding: 10px 14px; border-radius: 8px; opacity: 1; visibility: visible; transition: opacity 150ms; }
+.qa-closed .qa-tip { opacity: 0; visibility: hidden; }
+.qa-anchor:hover .qa-tip, .qa-anchor:focus-within .qa-tip { opacity: 1; visibility: visible; }
 .qa-tip-a { background: #243b63; color: white; }
 .qa-tip-a[data-side="left"] { background: #304f7e; }
 .qa-tip-b { background: #72502a; color: white; border-radius: 14px; }

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import "./FloatingQA.css";
 
 // Dedicated disposable QA cases. The ids belong to the surfaces, not triggers.
-function TooltipA({ open }: { open: boolean }) {
-  return <div className="qa-anchor"><span>Tooltip A trigger</span><span id="qa-tooltip-a" role="tooltip" data-side="top" className={open ? "qa-tip qa-tip-a qa-open" : "qa-tip qa-tip-a"}>Tooltip A <span className="qa-arrow" /></span></div>;
+function TooltipA() {
+  return <div className="qa-anchor"><span>Tooltip A trigger</span><span id="qa-tooltip-a" role="tooltip" data-side="top" className="qa-tip qa-tip-a">Tooltip A <span className="qa-arrow" /></span></div>;
 }
-function TooltipB({ open }: { open: boolean }) {
-  return <div className="qa-anchor"><span>Tooltip B trigger</span><span id="qa-tooltip-b" role="tooltip" data-side="left" className={open ? "qa-tip qa-tip-b qa-open" : "qa-tip qa-tip-b"}>Tooltip B</span></div>;
+function TooltipB() {
+  return <div className="qa-anchor"><span>Tooltip B trigger</span><span id="qa-tooltip-b" role="tooltip" data-side="left" className="qa-tip qa-tip-b">Tooltip B</span></div>;
 }
 function PopoverA() {
   return <div className="qa-anchor"><span>Popover A trigger</span><div id="qa-popover-a" popover="manual" data-qa-popover className="qa-pop qa-pop-a"><strong>Popover A</strong><p>First independent surface.</p></div></div>;
@@ -28,9 +28,9 @@ export default function FloatingQA() {
     <h1>Floating surface QA</h1>
     <p>Open or close the surfaces to exercise capture and highlighting.</p>
     <button onClick={() => setOpen(!open)}>{open ? "Close surfaces" : "Open surfaces"}</button>
-    <div className="qa-grid">
-      {!absent && <TooltipA open={open} />}
-      <TooltipB open={open} />
+    <div className={open ? "qa-grid" : "qa-grid qa-closed"}>
+      {!absent && <TooltipA />}
+      <TooltipB />
       {!absent && <PopoverA />}
       <PopoverB />
       {duplicate && <><span id="qa-tooltip-a" role="tooltip" className="qa-tip qa-tip-a qa-open">Duplicate tooltip</span><div id="qa-popover-a" popover="manual" data-qa-popover className="qa-pop qa-pop-a">Duplicate popover</div></>}
