@@ -6,6 +6,6 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {location.pathname === "/floating-qa" ? <FloatingQA /> : <App />}
+    {(location.pathname === "/floating-qa" || location.pathname === "/qa-private") ? <FloatingQA /> : <App />}
   </StrictMode>,
 );
