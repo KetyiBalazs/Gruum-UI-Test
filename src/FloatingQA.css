@@ -1,0 +1,18 @@
+.floating-qa { padding: 48px; min-height: 100vh; background: #f4f6fa; color: #172033; font: 16px system-ui; }
+.floating-qa h1 { font-size: 28px; }
+.floating-qa button { padding: 10px 16px; margin-bottom: 60px; }
+.qa-grid { display: grid; grid-template-columns: repeat(2, minmax(140px, 1fr)); gap: 100px 32px; }
+.qa-anchor { position: relative; min-height: 80px; }
+.qa-tip { position: absolute; bottom: 100%; left: 0; margin-bottom: 8px; padding: 10px 14px; border-radius: 8px; opacity: 0; visibility: hidden; transition: opacity 150ms; }
+.qa-tip.qa-open, .qa-anchor:hover .qa-tip, .qa-anchor:focus-within .qa-tip { opacity: 1; visibility: visible; }
+.qa-tip-a { background: #243b63; color: white; }
+.qa-tip-a[data-side="left"] { background: #304f7e; }
+.qa-tip-b { background: #72502a; color: white; border-radius: 14px; }
+.qa-arrow { display: block; width: 8px; height: 8px; background: inherit; transform: rotate(45deg); }
+.qa-pop { position: fixed; inset: auto; margin: 0; padding: 16px; border: 1px solid #536583; border-radius: 10px; background: #eff5ff; color: #152842; box-shadow: 0 6px 18px #0003; }
+.qa-pop-a { top: 320px; left: 32px; }
+.qa-pop-b { top: 320px; left: 220px; background: #fff2dc; border-radius: 18px; }
+.qa-pop:popover-open { display: block; }
+.qa-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.qa-excluded { margin-top: 12px; }
+@media (max-width: 450px) { .floating-qa { padding: 20px; } .qa-grid { grid-template-columns: 1fr; } .qa-pop-b { top: 420px; left: 100px; } }
