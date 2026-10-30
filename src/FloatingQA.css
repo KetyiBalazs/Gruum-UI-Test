@@ -11,8 +11,8 @@
 .qa-arrow { display: block; width: 8px; height: 8px; background: inherit; transform: rotate(45deg); }
 .qa-pop { position: fixed; inset: auto; margin: 0; padding: 16px; border: 1px solid #536583; border-radius: 10px; background: #eff5ff; color: #152842; box-shadow: 0 6px 18px #0003; }
 .qa-pop-a { top: 320px; left: 32px; }
-.qa-pop-b { top: 320px; left: 220px; background: #fff2dc; border-radius: 18px; }
+.qa-pop-b { top: 320px; left: 320px; background: #fff2dc; border-radius: 18px; }
 .qa-pop:popover-open { display: block; }
 .qa-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .qa-excluded { margin-top: 12px; }
-@media (max-width: 450px) { .floating-qa { padding: 20px; } .qa-grid { grid-template-columns: 1fr; } .qa-pop-b { top: 420px; left: 100px; } }
+@media (max-width: 450px) { .floating-qa { padding: 20px; } .qa-grid { grid-template-columns: 1fr; } .qa-pop-b { top: 450px; left: 100px; } }
