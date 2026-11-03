@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Signed-in QA fixture</title>
+  </head>
+  <body>
+    <main id="app"></main>
+    <script>
+      const app = document.querySelector("#app");
+      const render = () => {
+        if (sessionStorage.getItem("qa-signed-in") === "yes") {
+          app.innerHTML = `
+            <h1>Signed-in QA workspace</h1>
+            <p>Status: signed in</p>
+            <p>Account: qa-member@example.test</p>
+            <p>Workspace: disposable test tenant</p>
+            <p>This fixture contains no real account data.</p>
+            <button id="sign-out" type="button">Sign out</button>
+          `;
+          document.querySelector("#sign-out").addEventListener("click", () => {
+            sessionStorage.removeItem("qa-signed-in");
+            render();
+          });
+          return;
+        }
+
+        app.innerHTML = `
+          <h1>QA sign in</h1>
+          <p>Use the disposable fixture account to open its private workspace.</p>
+          <button id="sign-in" type="button">Sign in as QA member</button>
+        `;
+        document.querySelector("#sign-in").addEventListener("click", () => {
+          sessionStorage.setItem("qa-signed-in", "yes");
+          render();
+        });
+      };
+      render();
+    </script>
+  </body>
+</html>
