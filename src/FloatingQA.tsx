@@ -18,7 +18,7 @@ function PopoverB() {
   return <div className="qa-anchor"><span>Popover B trigger</span><div id="qa-popover-b" popover="manual" data-qa-popover className="qa-pop qa-pop-b"><strong>Popover B</strong><p>Second independent surface.</p></div></div>;
 }
 function PopoverC() {
-  return <div className="qa-anchor"><span>Popover C trigger</span><div id="qa-popover-c" popover="manual" data-qa-popover className="qa-pop qa-pop-c"><strong>Popover C</strong><p>Same design as Popover A.</p></div></div>;
+  return <div className="qa-anchor"><span>Popover C trigger</span><div id="qa-popover-c" popover="manual" data-qa-popover className="qa-pop qa-pop-c"><strong>Popover C</strong><p>Same as Popover A candidate.</p></div></div>;
 }
 export default function FloatingQA() {
   const [open, setOpen] = useState(!location.search.includes("closed"));
