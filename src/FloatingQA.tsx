@@ -3,16 +3,16 @@ import "./FloatingQA.css";
 
 // Dedicated disposable QA cases. The ids belong to the surfaces, not triggers.
 function TooltipA() {
-  return <div className="qa-anchor"><span>Tooltip A trigger</span><span id="qa-tooltip-a" role="tooltip" data-side="top" className="qa-tip qa-tip-a">Tooltip A <span className="qa-arrow" /></span></div>;
+  return <div className="qa-anchor"><button className="qa-trigger" aria-describedby="qa-tooltip-a">Tooltip A trigger</button><span id="qa-tooltip-a" role="tooltip" data-side="top" className="qa-tip qa-tip-a">Tooltip A <span className="qa-arrow" /></span></div>;
 }
 function TooltipB() {
-  return <div className="qa-anchor"><span>Tooltip B trigger</span><span id="qa-tooltip-b" role="tooltip" data-side="left" className="qa-tip qa-tip-b">Tooltip B</span></div>;
+  return <div className="qa-anchor"><button className="qa-trigger" aria-describedby="qa-tooltip-b">Tooltip B trigger</button><span id="qa-tooltip-b" role="tooltip" data-side="left" className="qa-tip qa-tip-b">Tooltip B</span></div>;
 }
 function TooltipC() {
-  return <div className="qa-anchor"><span>Tooltip C trigger</span><span id="qa-tooltip-c" role="tooltip" className="qa-tip qa-tip-c">Tooltip C, Add case</span></div>;
+  return <div className="qa-anchor"><button className="qa-trigger" aria-describedby="qa-tooltip-c">Tooltip C trigger</button><span id="qa-tooltip-c" role="tooltip" className="qa-tip qa-tip-c">Tooltip C, Add case</span></div>;
 }
 function TooltipD({ side }: { side: "top" | "left" }) {
-  return <div className="qa-anchor"><span>Tooltip D trigger</span><span id="qa-tooltip-d" role="tooltip" data-side={side} className={side === "left" ? "qa-tip qa-tip-d-left" : side === "top" ? "qa-tip qa-tip-d-top" : "qa-tip"}>Tooltip D, side selection</span></div>;
+  return <div className="qa-anchor"><button className="qa-trigger" aria-describedby="qa-tooltip-d">Tooltip D trigger</button><span id="qa-tooltip-d" role="tooltip" data-side={side} className={side === "left" ? "qa-tip qa-tip-d-left" : side === "top" ? "qa-tip qa-tip-d-top" : "qa-tip"}>Tooltip D, side selection</span></div>;
 }
 function PopoverA() {
   return <div className="qa-anchor"><span>Popover A trigger</span><div id="qa-popover-a" popover="manual" data-qa-popover className="qa-pop qa-pop-a"><strong>Popover A</strong><p>First independent surface.</p></div></div>;
