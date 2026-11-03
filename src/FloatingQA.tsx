@@ -8,11 +8,17 @@ function TooltipA() {
 function TooltipB() {
   return <div className="qa-anchor"><span>Tooltip B trigger</span><span id="qa-tooltip-b" role="tooltip" data-side="left" className="qa-tip qa-tip-b">Tooltip B</span></div>;
 }
+function TooltipC() {
+  return <div className="qa-anchor"><span>Tooltip C trigger</span><span id="qa-tooltip-c" role="tooltip" className="qa-tip qa-tip-c">Tooltip C, Add case</span></div>;
+}
 function PopoverA() {
   return <div className="qa-anchor"><span>Popover A trigger</span><div id="qa-popover-a" popover="manual" data-qa-popover className="qa-pop qa-pop-a"><strong>Popover A</strong><p>First independent surface.</p></div></div>;
 }
 function PopoverB() {
   return <div className="qa-anchor"><span>Popover B trigger</span><div id="qa-popover-b" popover="manual" data-qa-popover className="qa-pop qa-pop-b"><strong>Popover B</strong><p>Second independent surface.</p></div></div>;
+}
+function PopoverC() {
+  return <div className="qa-anchor"><span>Popover C trigger</span><div id="qa-popover-c" popover="manual" data-qa-popover className="qa-pop qa-pop-c"><strong>Popover C</strong><p>Same design as Popover A.</p></div></div>;
 }
 export default function FloatingQA() {
   const [open, setOpen] = useState(!location.search.includes("closed"));
@@ -31,8 +37,10 @@ export default function FloatingQA() {
     <div className={open ? "qa-grid" : "qa-grid qa-closed"}>
       {!absent && <TooltipA />}
       <TooltipB />
+      <TooltipC />
       {!absent && <PopoverA />}
       <PopoverB />
+      <PopoverC />
       {duplicate && <><span id="qa-tooltip-a" role="tooltip" className="qa-tip qa-tip-a qa-open">Duplicate tooltip</span><div id="qa-popover-a" popover="manual" data-qa-popover className="qa-pop qa-pop-a">Duplicate popover</div></>}
       <span role="tooltip" className="qa-hidden">Accessibility copy</span>
       <div role="menu" className="qa-excluded">Excluded menu</div>
