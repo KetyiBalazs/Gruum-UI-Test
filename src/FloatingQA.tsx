@@ -11,6 +11,9 @@ function TooltipB() {
 function TooltipC() {
   return <div className="qa-anchor"><span>Tooltip C trigger</span><span id="qa-tooltip-c" role="tooltip" className="qa-tip qa-tip-c">Tooltip C, Add case</span></div>;
 }
+function TooltipD({ side }: { side: "top" | "left" }) {
+  return <div className="qa-anchor"><span>Tooltip D trigger</span><span id="qa-tooltip-d" role="tooltip" data-side={side} className={side === "left" ? "qa-tip qa-tip-d-left" : side === "top" ? "qa-tip qa-tip-d-top" : "qa-tip"}>Tooltip D, side selection</span></div>;
+}
 function PopoverA() {
   return <div className="qa-anchor"><span>Popover A trigger</span><div id="qa-popover-a" popover="manual" data-qa-popover className="qa-pop qa-pop-a"><strong>Popover A</strong><p>First independent surface.</p></div></div>;
 }
@@ -38,6 +41,7 @@ export default function FloatingQA() {
       {!absent && <TooltipA />}
       <TooltipB />
       <TooltipC />
+      <TooltipD side="top" />
       {!absent && <PopoverA />}
       <PopoverB />
       <PopoverC />

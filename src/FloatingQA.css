@@ -10,6 +10,8 @@
 .qa-tip-a[data-side="left"] { background: #304f7e; }
 .qa-tip-b { background: #72502a; color: white; border-radius: 14px; }
 .qa-tip-c { background: #0f766e; color: white; border-radius: 12px; }
+.qa-tip-d-top { background: #075985; color: white; border-radius: 6px; }
+.qa-tip-d-left { background: #155e75; color: white; border-radius: 16px; }
 .qa-arrow { display: block; width: 8px; height: 8px; background: inherit; transform: rotate(45deg); }
 .qa-pop { position: fixed; inset: auto; margin: 0; padding: 16px; border: 1px solid #536583; border-radius: 10px; background: #eff5ff; color: #152842; box-shadow: 0 6px 18px #0003; }
 .qa-pop-a { top: 320px; left: 32px; }
